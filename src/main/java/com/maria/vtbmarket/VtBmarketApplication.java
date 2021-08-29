@@ -11,6 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VtBmarketApplication {
 
     public static void main(String[] args) {
+        
+        //Проверка на правильность работы на примере customer
+        
         SpringApplication.run(VtBmarketApplication.class, args);
         Customer customer = new Customer();
         CustomerInfo info = new CustomerInfo();
