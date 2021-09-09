@@ -6,6 +6,7 @@ import com.maria.vtbMarket.repository.ProductRepository;
 import com.maria.vtbMarket.repository.ProductsInPurchaseRepository;
 import com.maria.vtbMarket.repository.PurchaseRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashMap;
@@ -15,9 +16,8 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Transactional
+@Service
 public class ProductDemoService {
-
-    //Для тестирования
 
     private ProductRepository productRepository;
     private ProductCategoryRepository productCategoryRepository;
