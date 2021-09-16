@@ -11,7 +11,7 @@ import java.util.Set;
 
 @AllArgsConstructor
 @Transactional
-public class CustomerDemoService {
+public class CustomerService {
 
     //Для тестирования
 

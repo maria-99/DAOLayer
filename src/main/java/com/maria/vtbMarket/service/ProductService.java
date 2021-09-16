@@ -6,23 +6,35 @@ import com.maria.vtbMarket.repository.ProductRepository;
 import com.maria.vtbMarket.repository.ProductsInPurchaseRepository;
 import com.maria.vtbMarket.repository.PurchaseRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
 @Transactional
 @Service
-public class ProductDemoService {
+public class ProductService {
 
     private ProductRepository productRepository;
     private ProductCategoryRepository productCategoryRepository;
     private PurchaseRepository purchaseRepo;
     private ProductsInPurchaseRepository productsInPurchaseRepo;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository,
+                          ProductCategoryRepository productCategoryRepository,
+                          PurchaseRepository purchaseRepo,
+                          ProductsInPurchaseRepository productsInPurchaseRepo) {
+        this.productRepository = productRepository;
+        this.productCategoryRepository = productCategoryRepository;
+        this.purchaseRepo = purchaseRepo;
+        this.productsInPurchaseRepo = productsInPurchaseRepo;
+    }
 
     public void deleteProductDemo(int id){
         productRepository.deleteById(id);
@@ -47,8 +59,20 @@ public class ProductDemoService {
         return productsQuantityInPurchase;
     }
 
+    public Collection<Product> getAllProducts(){
+        return productRepository.findAll();
+    }
+
+    public Product get(int id){
+        return productRepository.getByProductId(id);
+    }
+
     public Set<Product> getTopProducts(int limit){
         return productRepository.getTopProducts(limit);
+    }
+
+    public void add(Product product) {
+        productRepository.save(product);
     }
 
 }
